@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 apply plugin: 'com.android.library'
 apply plugin: 'com.google.protobuf'
 
@@ -39,9 +41,21 @@ android {
     }
 }
 
+def getProtobufArtifact() {
+    def module = "com.google.protobuf:protoc"
+    def version = "3.8.0"
+    if (Os.isFamily(Os.FAMILY_MAC)) {
+        return "$module:$version:osx-x86_64"
+    }
+
+    return "$module:$version"
+}
+
+def protobufArtifact = getProtobufArtifact()
+
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.8.0'
+        artifact = "$protobufArtifact"
     }
     generateProtoTasks {
         all().each { task ->
