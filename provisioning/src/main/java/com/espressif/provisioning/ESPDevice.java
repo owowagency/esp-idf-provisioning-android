@@ -1244,7 +1244,8 @@ public class ESPDevice {
                     } else {
                         provisionListener.provisioningFailedFromDevice(ESPConstants.ProvisionFailureReason.UNKNOWN);
                     }
-                    session = null;
+                    // Don't clear the session if invalid credentials provided
+                    // session = null;
                     disableOnlyWifiNetwork();
                 }
             }
