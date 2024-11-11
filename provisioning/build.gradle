@@ -2,6 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.google.protobuf'
+apply plugin: 'maven-publish'
 
 buildscript {
     repositories {
@@ -49,6 +50,20 @@ def getProtobufArtifact() {
     }
 
     return "$module:$version"
+}
+
+publishing {
+    publications {
+        register("release", MavenPublication) {
+            groupId = "io.owow"
+            artifactId = "esp-idf-provisioning-android"
+            version = "2.0.13"
+
+            afterEvaluate {
+                from(components.release)
+            }
+        }
+    }
 }
 
 def protobufArtifact = getProtobufArtifact()
