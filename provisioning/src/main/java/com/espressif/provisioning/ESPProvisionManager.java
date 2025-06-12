@@ -85,7 +85,7 @@ public class ESPProvisionManager {
 
     private ESPProvisionManager(Context context) {
         this.context = context;
-        handler = new Handler();
+        handler = new Handler(context.getMainLooper());
     }
 
     /**

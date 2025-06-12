@@ -54,7 +54,7 @@ public class BleScanner {
     public BleScanner(Context context, BleScanListener bleScannerListener) {
 
         this.bleScanListener = bleScannerListener;
-        handler = new Handler();
+        handler = new Handler(context.getMainLooper());
 
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         bluetoothAdapter = bluetoothManager.getAdapter();
