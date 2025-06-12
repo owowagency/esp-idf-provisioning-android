@@ -43,7 +43,7 @@ publishing {
         register("release", MavenPublication) {
             groupId = "io.owow"
             artifactId = "esp-idf-provisioning-android"
-            version = "lib-2.2.6"
+            version = "lib-2.2.7"
 
             afterEvaluate {
                 from(components.release)
